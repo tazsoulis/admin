@@ -1,0 +1,17 @@
+var myArray =[
+	{
+		"name":"tasos",
+		"surname":"mitronatsios",
+		"age":18	
+	},
+	{
+		"name":"Nikos",
+		"surname":"papadopoulos",
+		"age":13	
+	},
+	{
+		"name":"maria",
+		"surname":"petrou",
+		"age":18	
+	}
+]

@@ -1,0 +1,4 @@
+RewriteEngine on
+RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|css|downloads|jquery|js|robots\.txt|assets|favicon\.ico)
+
+RewriteRule ^(.*)$ /admin/index.php/$1 [L]
