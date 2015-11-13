@@ -4,42 +4,68 @@
   </div>
 </div>
 
-<script>
-$(document).ready(function(){
-	/*$("#productname").autocomplete({
-		source:"<?php echo base_url('app/search/?'); ?>"
-	});*/
-	$('#productname').autocomplete({
-
-    source: function (request, response) {
-    	console.log(request);
-    	var url="app/search/"+request.term;
-        $.getJSON("<?php echo base_url('?>"+url+"<?php');?>", function (data) {
-        	console.log(data);
-            response($.map(data.dealers, function (value, key) {
-                return {
-                    label: value,
-                    id: key
-                };
-            }));
-        });
-    },
-    minLength: 2,
-    delay: 100
-});
-});
-	
-</script>
-<div class="spacer-100"></div>
-
-
+<div id="project-label">Select a project (type "j" for a start):</div>
 <h4 class="white-text">Search...</h4>
-    <input type="text" name="productname" id="productname">
+    <input type="text" name="project" id="project">
     
 </div>
 
 
+<script>
+    $(document).ready(function(){
+        (function($){
+  
+          var $project = $('#project');
+
+          var projects = [
+            {
+              value: "jquery",
+              label: "jQuery",
+              desc: "the write less, do more, JavaScript library",
+              icon: "jquery_32x32.png"
+            },
+            {
+              value: "jquery-ui",
+              label: "jQuery UI",
+              desc: "the official user interface library for jQuery",
+              icon: "jqueryui_32x32.png"
+            },
+            {
+              value: "sizzlejs",
+              label: "Sizzle JS",
+              desc: "a pure-JavaScript CSS selector engine",
+              icon: "sizzlejs_32x32.png"
+            }
+          ];
+          
+          $project.autocomplete({
+            minLength: 0,
+            source: projects,
+            focus: function( event, ui ) {
+              $project.val( ui.item.label );
+              return false;
+            }
+          });
+          
+          $project.data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+            
+            var $li = $('<li>'),
+                $img = $('<img>');
 
 
+            $img.attr({
+              src: 'https://jqueryui.com/resources/demos/autocomplete/images/' + item.icon,
+              alt: item.label
+            });
 
+            $li.attr('data-value', item.label);
+            $li.append('<a href="#">');
+            $li.find('a').append($img).append(item.label);    
 
+            return $li.appendTo(ul);
+          };
+          
+
+        })(jQuery);
+    });
+</script>
