@@ -70,12 +70,16 @@ class App extends CI_Controller {
         $this->Project->create();
     }
 
+    public function test(){
+       
+        $this->load->view('app/test');
+    }
+
     public function delete(){
         $id =  $this->input->POST('id');
-        echo $id;
+     
         $this->db->where('id', $id);
-        unlink(path/to/file/images/$path);
-       // $deleted=$this->db->delete('portfolio');
+        $deleted=$this->db->delete('portfolio');
        
     }
 
@@ -109,15 +113,31 @@ class App extends CI_Controller {
 
 
     public function search($re){
-       if (isset($_GET['term'])){
+        
             $result = $this->Project->search($re);
-            if (count($result) > 0) {
-                foreach($result as $pr)
-                    //$arr_result[]= $pr->title;
-                    $arr_result[] = array('label' => $pr->title, 'id' => $pr->brand);
-                echo json_encode($arr_result);
+            if (count($result) > 0){
+                $arr_result[]=array();
+                foreach ($result as $pr) {
+                //$arr_result=array('value' =>$pr->brand );
+                $arr_result[] = array('brand'=>$pr->brand,'title' => $pr->title, 'descriptions' => $pr->description, 'image' => $pr->path);
             }
-        }
+            echo json_encode($arr_result);
+            }
+           /* if (count($result) > 0) {
+                foreach($result as $pr){
+                    $arr_result[] = array('value'=>$pr->title,'label' => $pr->brand, 'desc' => 'mpla','icon' => 'mpla');
+                }
+                echo json_encode($arr_result);
+            }*/
+            /*$data = array();
+            foreach($result as $pr){
+                array_push($data, array('value'=>$pr->title,'label' => $pr->brand, 'desc' => 'mpla','icon' => 'mpla'));
+            }*/
+           
+            //echo json_encode($arr_result);
+            //echo json_encode(count($this->Project->search($re)));
+                
+                //echo json_encode(array('value'=>$re,'label' => '$pr->brand', 'desc' => 'mpla','icon' => 'mpla'));
     }
 
 

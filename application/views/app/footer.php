@@ -28,4 +28,6 @@
   <script type="text/javascript" src="<?= base_url("assets/js/custom.js") ?>"></script>
   <script type="text/javascript" src="<?= base_url("assets/js/sweetalert.min.js") ?>"></script>
   <script type="text/javascript" src="<?= base_url("assets/js/awesomplete.min.js") ?>"></script></body>
+  <script type="text/javascript" src="js/plugins/data-tables/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="js/plugins/data-tables/data-tables-script.js"></script>
 </html>

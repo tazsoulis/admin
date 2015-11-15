@@ -2,12 +2,12 @@
   <div class="col s6 offset-s3 ">
      <h4 class=" center-align white-text">Welcome Back </h4>
   </div>
-</div>
 
-<div id="project-label">Select a project (type "j" for a start):</div>
+</div>
 <h4 class="white-text">Search...</h4>
-    <input type="text" name="project" id="project">
-    
+  <form action="<?= base_url('app/search')?>" method="GET">
+      <input type="text" name="project" id="project"> 
+  </form>
 </div>
 
 
@@ -55,7 +55,7 @@
 
             $img.attr({
               src: 'https://jqueryui.com/resources/demos/autocomplete/images/' + item.icon,
-              alt: item.label
+              alt: item.labelta
             });
 
             $li.attr('data-value', item.label);
@@ -65,6 +65,9 @@
             return $li.appendTo(ul);
           };
           
+          $.getJSON( "<?= base_url("app/search/a"); ?>", function( data ) {
+              console.log(data);
+          });
 
         })(jQuery);
     });

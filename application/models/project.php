@@ -41,9 +41,12 @@
 //*******************//  
 
   function search($title) {
-    $this->db->select('*');
-    $this->db->like('title', $title, 'both');
+    //$this->db->select('*');
+    //$this->db->like('title', $title, 'both');
     return $this->db->get('portfolio')->result() ;
+    //$this -> db -> select('*');
+   // $tmp=$this -> db -> from('portfolio');
+    return $this->db->get();
   }
 
 

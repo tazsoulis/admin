@@ -50,9 +50,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['index'] = 'app/index';
-$route['search/([a-z]+)'] = 'app/search/$1';
+$route['search/(:any)'] = 'app/search/$1';
 
 $route['confirm'] = 'app/confirm';
+$route['test'] = 'app/test';
 $route['logout'] = 'app/logout';
 $route['admin'] = 'app/admin';
 $route['insert'] = 'app/insert';
